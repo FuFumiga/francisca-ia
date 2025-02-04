@@ -1,0 +1,79 @@
+Francisca Ia Site
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francisca.IA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .messages {
+            min-height: 200px;
+            max-height: 300px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Francisca.IA</h2>
+        <div class="messages" id="messages"></div>
+        <input type="text" id="userInput" placeholder="Escreva uma mensagem...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+    
+    <script>
+        function sendMessage() {
+            let input = document.getElementById("userInput");
+            let message = input.value;
+            if (message.trim() === "") return;
+            
+            let chatBox = document.getElementById("messages");
+            let userMessage = `<div><strong>Você:</strong> ${message}</div>`;
+            chatBox.innerHTML += userMessage;
+            
+            input.value = "";
+            setTimeout(() => {
+                let botMessage = `<div><strong>Francisca:</strong> Ainda estou aprendendo a responder!</div>`;
+                chatBox.innerHTML += botMessage;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
